@@ -1,7 +1,7 @@
 package domain
 
 type Project struct {
-	Name string
+	Name          string
 	CustomerEmail string
-	Token string
+	Token         string
 }

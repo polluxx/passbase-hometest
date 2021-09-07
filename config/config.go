@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+
 	"github.com/spf13/viper"
 )
 
@@ -13,20 +14,20 @@ type Config struct {
 }
 
 type Database struct {
-	Type string
-	Host string
-	Port int
-	User string
+	Type     string
+	Host     string
+	Port     int
+	User     string
 	Password string
-	Name string
+	Name     string
 }
 
-type Rates struct{
+type Rates struct {
 	Fixer
 }
 
-type Fixer struct{
-	APIKey string
+type Fixer struct {
+	APIKey   string
 	BaseHost string
 }
 

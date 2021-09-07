@@ -2,9 +2,10 @@ package sqlite
 
 import (
 	"database/sql"
+	"passbase-hometest/config"
+
 	_ "github.com/mattn/go-sqlite3"
 	"go.uber.org/zap"
-	"passbase-hometest/config"
 )
 
 type SQLite struct {

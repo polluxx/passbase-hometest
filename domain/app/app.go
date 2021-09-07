@@ -10,6 +10,6 @@ type App struct {
 
 func NewApp(repository database.Repository) *App {
 	return &App{
-		Router:     NewRouter(repository),
+		Router: NewRouter(repository),
 	}
 }

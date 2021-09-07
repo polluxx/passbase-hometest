@@ -23,8 +23,9 @@ type Repository interface {
 var ErrRecordNotFound = errors.New("record not found")
 
 type Databases int
+
 const (
-	SQLite Databases = iota+1
+	SQLite Databases = iota + 1
 )
 
 func Connect(conf config.Database, dbtype Databases) Repository {

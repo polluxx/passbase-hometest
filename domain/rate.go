@@ -5,11 +5,11 @@ import (
 )
 
 type Rate struct {
-	Value float64
-	Domain Currency
+	Value    float64
+	Domain   Currency
 	Currency string
-	Updated time.Time
-	Base bool
+	Updated  time.Time
+	Base     bool
 }
 
 // Convert serves the idea of money conversion between currencies,

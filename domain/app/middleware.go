@@ -2,9 +2,10 @@ package app
 
 import (
 	"errors"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"net/http"
 )
 
 func AuthMiddleware(findActiveProduct func(token string) bool) gin.HandlerFunc {

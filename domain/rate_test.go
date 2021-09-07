@@ -1,16 +1,17 @@
 package domain
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestRate_Convert(t *testing.T) {
 	tests := []struct {
-		name string
-		source Rate
-		dest Rate
-		amount int
+		name      string
+		source    Rate
+		dest      Rate
+		amount    int
 		converted float64
 	}{
 		{
@@ -25,7 +26,7 @@ func TestRate_Convert(t *testing.T) {
 				Domain:   UAH,
 				Currency: "UAH",
 			},
-			amount: 120,
+			amount:    120,
 			converted: 3000,
 		},
 		{
@@ -40,7 +41,7 @@ func TestRate_Convert(t *testing.T) {
 				Domain:   CAD,
 				Currency: "CAD",
 			},
-			amount: 150,
+			amount:    150,
 			converted: 184.5,
 		},
 	}
@@ -52,6 +53,3 @@ func TestRate_Convert(t *testing.T) {
 		})
 	}
 }
-
-
-

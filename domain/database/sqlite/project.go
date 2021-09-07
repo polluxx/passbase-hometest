@@ -8,10 +8,10 @@ import (
 )
 
 type Project struct {
-	ID              int64      `db:"id"`
-	Name    string   `db:"name"`
-	CustomerEmail string    `db:"email"`
-	Token  string `db:"token"`
+	ID            int64  `db:"id"`
+	Name          string `db:"name"`
+	CustomerEmail string `db:"email"`
+	Token         string `db:"token"`
 }
 
 func (s *SQLite) RegisterProject(ctx context.Context, project domain.Project) (int64, error) {

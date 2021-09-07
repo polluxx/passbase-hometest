@@ -11,15 +11,15 @@ import (
 
 type Fixer struct {
 	latestRatesEndpoint string
-	apikey string
-	basehost string
+	apikey              string
+	basehost            string
 }
 
 type Response struct {
-	Success bool `json:"success"`
-	Base string `json:"base"`
-	Timestamp int64 `json:"timestamp"`
-	Rates map[string]float64
+	Success   bool   `json:"success"`
+	Base      string `json:"base"`
+	Timestamp int64  `json:"timestamp"`
+	Rates     map[string]float64
 }
 
 func New(conf *config.Fixer) *Fixer {
@@ -53,14 +53,16 @@ func (f *Fixer) Latest() ([]domain.Rate, error) {
 	for currency, value := range response.Rates {
 		domainRate := domain.CurrencyToDomain(currency)
 		// filter out all unsupported currencies
-		if domainRate == domain.RateUndefined { continue }
+		if domainRate == domain.RateUndefined {
+			continue
+		}
 
 		rates = append(rates, domain.Rate{
-			Value:  value,
-			Domain: domainRate,
-			Currency:  currency,
-			Base: response.Base == currency,
-			Updated: updateTime,
+			Value:    value,
+			Domain:   domainRate,
+			Currency: currency,
+			Base:     response.Base == currency,
+			Updated:  updateTime,
 		})
 	}
 

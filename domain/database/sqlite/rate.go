@@ -9,8 +9,8 @@ import (
 )
 
 type Rate struct {
-	ID              int64      `db:"id"`
-	Rate    float64   `db:"rate"`
+	ID       int64     `db:"id"`
+	Rate     float64   `db:"rate"`
 	Currency string    `db:"currency"`
 	Updated  time.Time `db:"updated"`
 	Base     bool      `db:"base"`

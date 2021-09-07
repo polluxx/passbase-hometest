@@ -5,21 +5,22 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/urfave/cli"
-	"go.uber.org/zap"
 	"os"
 	"passbase-hometest/config"
 	"passbase-hometest/domain/database"
 	"passbase-hometest/domain/providers"
 	"time"
+
+	"github.com/urfave/cli"
+	"go.uber.org/zap"
 )
 
 var (
-	configFolder = "../../config"
+	configFolder   = "../../config"
 	updateInterval = int64(12 * 60)
-	configuration *config.Config
-	repository database.Repository
-	ratesProvider providers.Providerer
+	configuration  *config.Config
+	repository     database.Repository
+	ratesProvider  providers.Providerer
 
 	log = zap.S().Named("rates sync")
 )
@@ -32,8 +33,8 @@ func main() {
 
 	commonFlags := []cli.Flag{
 		&cli.StringFlag{
-			Name:        "config",
-			Usage:       "Folder where config.yml is located",
+			Name:  "config",
+			Usage: "Folder where config.yml is located",
 			//TakesFile:   true,
 			Value:       configFolder,
 			Destination: &configFolder,
@@ -66,7 +67,7 @@ func main() {
 	}
 }
 
-func setup()  {
+func setup() {
 	var err error
 	flag.Parse()
 
@@ -93,7 +94,7 @@ func setup()  {
 	repository = database.Connect(configuration.Database, database.SQLite)
 }
 
-func syncWithTimer()  {
+func syncWithTimer() {
 	syncTime := time.Duration(updateInterval) * time.Second
 	timer := time.NewTimer(syncTime)
 	// call this first time before timer will run
@@ -120,7 +121,7 @@ func sync() error {
 	}
 
 	// close db connections if 1 minute passed
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second * 60)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*60)
 	defer cancel()
 
 	for _, rate := range results {
@@ -156,6 +157,6 @@ func sync() error {
 		}
 	}
 
-	fmt.Printf("Synced! Next iteration in: %s \n", time.Duration(updateInterval) * time.Second)
+	fmt.Printf("Synced! Next iteration in: %s \n", time.Duration(updateInterval)*time.Second)
 	return nil
 }

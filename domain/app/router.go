@@ -3,23 +3,25 @@ package app
 import (
 	"context"
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 
-	_ "passbase-hometest/cmd/server/docs"
-	"go.uber.org/zap"
 	"math"
 	"net/http"
+	_ "passbase-hometest/cmd/server/docs"
 	"passbase-hometest/domain"
 	"passbase-hometest/domain/database"
 	"strconv"
+
+	"go.uber.org/zap"
 )
 
 var logger = zap.S().Named("router")
 
 type Router struct {
-	Engine *gin.Engine
+	Engine            *gin.Engine
 	repositoryService database.Repository
 }
 
@@ -167,9 +169,9 @@ func (r *Router) convertRates(c *gin.Context) {
 
 	c.JSON(http.StatusOK,
 		gin.H{
-		"base": baseCurrency.Currency,
-		"converted": gin.H{
-			"amount": convertedSum,
-			"currency": destCurr.Currency,
-		}})
+			"base": baseCurrency.Currency,
+			"converted": gin.H{
+				"amount":   convertedSum,
+				"currency": destCurr.Currency,
+			}})
 }

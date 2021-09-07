@@ -1,17 +1,18 @@
 package main
 
 import (
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 	"passbase-hometest/config"
 	"passbase-hometest/domain/app"
 	"passbase-hometest/domain/database"
+
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 
 	_ "passbase-hometest/cmd/server/docs"
 )
 
 var (
-	log = buildZapLog()
+	log          = buildZapLog()
 	configFolder = "../../config"
 )
 
