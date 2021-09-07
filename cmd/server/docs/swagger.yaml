@@ -1,0 +1,100 @@
+basePath: /
+definitions:
+  main.Project:
+    properties:
+      customer_email:
+        example: test@tt.tt
+        type: string
+      name:
+        example: project name
+        type: string
+    required:
+    - customer_email
+    - name
+    type: object
+info:
+  contact:
+    email: yuriy.kosakivsky@eliftech.com
+    name: Yuriy Kosakivsky
+    url: https://www.eliftech.com
+  description: This is a simple REST server for currency conversions.
+  title: Passbase Home test API
+  version: "1.0"
+paths:
+  /convert:
+    get:
+      consumes:
+      - application/json
+      description: converts passed amount based on source and destination currency
+        rates
+      parameters:
+      - description: your API token
+        in: query
+        name: token
+        required: true
+        type: string
+      - description: source currency
+        in: query
+        name: source
+        required: true
+        type: string
+      - description: destination currency
+        in: query
+        name: destination
+        required: true
+        type: string
+      - description: source amount
+        in: query
+        name: amount
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"converted": {"currency": "destination currency", "amount":
+            "amount"}}'
+          schema:
+            type: string
+        "400":
+          description: project with that email is already signed up
+          schema:
+            type: string
+        "500":
+          description: internal server error
+          schema:
+            type: string
+  /project:
+    post:
+      consumes:
+      - application/json
+      description: signing up a new project and returns an unique api token
+      parameters:
+      - description: Project name
+        in: body
+        name: name
+        required: true
+        schema:
+          $ref: '#/definitions/main.Project'
+      - description: Unique customer email
+        in: body
+        name: customer_email
+        required: true
+        schema:
+          $ref: '#/definitions/main.Project'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"token": "your token"}'
+          schema:
+            type: string
+        "400":
+          description: project with that email is already signed up
+          schema:
+            type: string
+        "500":
+          description: internal server error
+          schema:
+            type: string
+swagger: "2.0"

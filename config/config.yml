@@ -1,0 +1,11 @@
+rates:
+    fixer:
+        apikey: "0721af34d1adeff3e94d5cd46b2336b5"
+        basehost: "http://data.fixer.io"
+database:
+    type: "sqlite"
+    host: "localhost"
+    port: 1000
+    user: "root"
+    password: "ababagalamaga42"
+    name: "../../data/rates.db"
